@@ -1,4 +1,4 @@
-import { ChakraProvider, DarkMode } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 import './App.css';
 import Dic from './components/Dic';
 
