@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Input, Stack, Button, Heading, Text, Icon , InputGroup} from '@chakra-ui/react'
+import { Input, Stack, Button, Heading, Text, Icon , InputGroup,Flex} from '@chakra-ui/react'
 import { FaSearch } from "react-icons/fa"
 
 function Dic({ isDarkMode }) {
@@ -35,7 +35,7 @@ function Dic({ isDarkMode }) {
     }
 
     return (
-        <Stack py="10" bg={ isDarkMode ? "gray.900" : "white"}>
+        <Flex h="1100px" direction="column" py="10" bg={ isDarkMode ? "gray.900" : "white"} alignItems="center">
             <form onSubmit={handleSearch}>
                 <Stack spacing={[2, 4]} >
                     <Stack direction="row" justifyContent="center">
@@ -51,10 +51,10 @@ function Dic({ isDarkMode }) {
                     </Stack>
                 </Stack>
             </form>
-            {definitions.length > 0 ? (
-                definitions.map((meaning, index) => (
+            
+               { definitions.map((meaning, index) => (
                     <div key={index}>
-                        <Stack padding={["20px", "25px", "35px"]} bg={ isDarkMode ? "gray.900" : "white"} color={isDarkMode ? "white":"gray.700"}>
+                        <Stack  padding={["20px", "25px", "35px"]} bg={ isDarkMode ? "gray.900" : "white"} color={isDarkMode ? "white":"gray.700"} h="full">
                             <Stack direction="column" justifyContent="flex-start">
                                 <Stack direction="row">
                                     <Heading fontSize={["24px", "32px"]} color={isDarkMode ? "white":"black"} fontweight="900" lineHeight="taller">{word.charAt(0).toUpperCase() + word.slice(1)}</Heading>
@@ -70,10 +70,8 @@ function Dic({ isDarkMode }) {
                         </Stack>
                     </div>
                 ))
-            ) : (
-                <p>No definitions found.</p>
-            )}
-        </Stack>
+                                }            
+        </Flex>
     );
 }
 export default Dic;      

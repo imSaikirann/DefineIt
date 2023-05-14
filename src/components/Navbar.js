@@ -10,6 +10,7 @@ function Navbar({ isDarkMode, toggleDarkMode }) {
       wrap="wrap"
       py={6}
       px={10}
+      
       bg={isDarkMode ? "gray.800" : "white"}
       color={isDarkMode ? "white" : "gray.800"}
       boxShadow={isDarkMode ? "md" : "none"}

@@ -13,9 +13,14 @@ function App() {
 
   return (
     <ChakraProvider >
+      
       <NavBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <Dic isDarkMode={isDarkMode} />
+      
+      
+      
     </ChakraProvider>
+    
   );
 }
 
