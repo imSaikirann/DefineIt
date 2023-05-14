@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Input, Stack, Button, Heading, Text, Icon } from '@chakra-ui/react'
+import { Input, Stack, Button, Heading, Text, Icon , InputGroup} from '@chakra-ui/react'
 import { FaSearch } from "react-icons/fa"
 
-function Dictionary() {
+function Dic({ isDarkMode }) {
+
     const [word, setWord] = useState("");
     const [definitions, setDefinitions] = useState([]);
-    const [phonetic,setphonetic] = useState("")
+    const [phonetic, setphonetic] = useState("")
 
     useEffect(() => {
         async function fetchData() {
@@ -34,42 +35,39 @@ function Dictionary() {
     }
 
     return (
-        <Stack py="10">
-
+        <Stack py="10" bg={ isDarkMode ? "gray.900" : "white"}>
             <form onSubmit={handleSearch}>
-                <Stack spacing={4} >
+                <Stack spacing={[2, 4]} >
                     <Stack direction="row" justifyContent="center">
-                        <Heading fontFamily="Arial">E-Dictionary</Heading>
+                        <Heading fontFamily="Arial" color={isDarkMode ? "white":"grey"}>E-Dictionary</Heading>
                     </Stack>
-                    <Stack direction="row" justifyContent="center" >
-                        <Input px="2" py="4" borderRadius="8px" bozShadow="rgba(0,0,0,0.2) 0px 4px 6px 0px" size="lg" w="600px" name="search" />
+                    <Stack direction={{ base: "column", lg: "row" }} justifyContent="center" padding={["20px", "30px", "40px"]}  >
+                        <InputGroup size="lg" w={["100%", "600px"]} mx="auto">
+                            <Input type="text" name="search" borderRadius="8px" bozShadow="rgba(0,0,0,0.2) 0px 4px 6px 0px" placeholder="Search" />
+                        </InputGroup>
                         <Stack direction="row" justifyContent="center">
-                            <Button type="submit" px={4} py={6}><Icon as={FaSearch} w={6} h={10} color="gray.500"></Icon></Button>
+                            <Button type="submit" px={[2, 4]} py={[3, 6]}><Icon as={FaSearch} w={6} h={10} color="gray.500"></Icon></Button>
                         </Stack>
                     </Stack>
-
                 </Stack>
-
-
             </form>
             {definitions.length > 0 ? (
                 definitions.map((meaning, index) => (
                     <div key={index}>
-                        <Stack px="20" >
+                        <Stack padding={["20px", "25px", "35px"]} bg={ isDarkMode ? "gray.900" : "white"} color={isDarkMode ? "white":"gray.700"}>
                             <Stack direction="column" justifyContent="flex-start">
-                               <Stack direction="row">
-                               <Heading fontSize="32px" fontweight="900" lineHeight="taller">{word.charAt(0).toUpperCase()+word.slice(1)}</Heading>
-                               <Heading fontSize="32px" fontweight="700" lineHeight="taller">{phonetic}</Heading>
-                               </Stack>
-                                <Text fontSize="20px" fontWeight="600">{meaning.partOfSpeech}</Text>
+                                <Stack direction="row">
+                                    <Heading fontSize={["24px", "32px"]} color={isDarkMode ? "white":"black"} fontweight="900" lineHeight="taller">{word.charAt(0).toUpperCase() + word.slice(1)}</Heading>
+                                    <Heading fontSize={["24px", "32px"]} fontweight="700" lineHeight="taller">{phonetic}</Heading>
+                                </Stack>
+                                <Text fontSize={["16px", "20px"]} fontWeight="600">{meaning.partOfSpeech}</Text>
                             </Stack>
                             <Stack >
                                 {meaning.definitions.map((definition, index) => (
-                                    <Text as="p" fontSize="lg" fontFamily="Helvetica" key={index}> {definition.definition}</Text>
+                                    <Text as="p" fontSize={["14px", "lg"]} fontFamily="Helvetica" key={index}> {definition.definition}</Text>
                                 ))}
                             </Stack>
                         </Stack>
-
                     </div>
                 ))
             ) : (
@@ -78,5 +76,4 @@ function Dictionary() {
         </Stack>
     );
 }
-
-export default Dictionary;
+export default Dic;      
