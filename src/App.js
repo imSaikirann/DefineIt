@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import  NavBar  from "./components/Navbar";
 import Dic from "./components/Dic";
+import './App.css'
 
 
 function App() {
