@@ -39,11 +39,11 @@ function Dic({ isDarkMode }) {
             <form onSubmit={handleSearch}>
                 <Stack spacing={[2, 4]} >
                     <Stack direction="row" justifyContent="center">
-                        <Heading fontFamily="Arial" color={isDarkMode ? "white":"grey"}>E-Dictionary</Heading>
+                        <Heading fontFamily="Arial" color={isDarkMode ? "white":"grey"}>DefineIt</Heading>
                     </Stack>
-                    <Stack direction={{ base: "column", lg: "row" }} justifyContent="center" padding={["20px", "30px", "40px"]}  >
+                    <Stack direction={{ base: "row", lg: "row" }} justifyContent="center" padding={["20px", "30px", "40px"]}  >
                         <InputGroup size="lg" w={["100%", "600px"]} mx="auto">
-                            <Input type="text" name="search" borderRadius="8px" bozShadow="rgba(0,0,0,0.2) 0px 4px 6px 0px" placeholder="Search" />
+                            <Input type="text" name="search" borderRadius="8px" bozShadow="rgba(0,0,0,0.2) 0px 4px 6px 0px" placeholder="Search" color={isDarkMode ? "white" : "gray.800"} bg={isDarkMode ? "gray.800":"white"}/>
                         </InputGroup>
                         <Stack direction="row" justifyContent="center">
                             <Button type="submit" px={[2, 4]} py={[3, 6]}><Icon as={FaSearch} w={6} h={10} color="gray.500"></Icon></Button>

@@ -1,29 +1,28 @@
 import React from "react";
-import { Box, Flex, Link } from "@chakra-ui/react";
+import { Box, Flex, IconButton } from "@chakra-ui/react";
+import {  FaSun , FaMoon } from "react-icons/fa"
 
 function Navbar({ isDarkMode, toggleDarkMode }) {
   return (
     <Flex
       as="nav"
-      align="center"
+      alignItems="center"
       justify="space-between"
       wrap="wrap"
-      py={6}
-      px={10}
-      
+      py={0}
+      px={8}
+      h="60px"
       bg={isDarkMode ? "gray.800" : "white"}
-      color={isDarkMode ? "white" : "gray.800"}
+      color={isDarkMode ? "black" : "gray.800"}
       boxShadow={isDarkMode ? "md" : "none"}
     >
       <Box>
-        <Link href="/" fontSize="xl" fontWeight="bold">
-          E-Dictionary
-        </Link>
+        
       </Box>
       <Box>
-        <Link onClick={toggleDarkMode}>
-          {isDarkMode ? "Light Mode" : "Dark Mode"}
-        </Link>
+        <IconButton onClick={toggleDarkMode} isRound >
+          {isDarkMode ? <FaSun/> : <FaMoon/>}
+        </IconButton>
       </Box>
     </Flex>
   );
