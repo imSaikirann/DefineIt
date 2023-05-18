@@ -48,7 +48,7 @@ function Dic({ isDarkMode }) {
     function handleSearch(event) {
         event.preventDefault();
        
-        if(word == "")
+        if(word === "")
        
         {  toast({
             title: "Error",
