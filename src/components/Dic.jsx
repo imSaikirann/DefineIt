@@ -47,10 +47,12 @@ function Dic({ isDarkMode }) {
 
     function handleSearch(event) {
         event.preventDefault();
-       
-        if(word === "")
-       
-        {  toast({
+        const enteredWord = event.target.search.value.trim();
+        if (enteredWord !== "") {
+          setWord(enteredWord);
+          console.log("ok");
+        } else {
+          toast({
             title: "Error",
             description: "Please enter a word.",
             status: "error",
@@ -58,11 +60,8 @@ function Dic({ isDarkMode }) {
             isClosable: true,
           });
         }
-        else
-        {
-            setWord(event.target.search.value);
-        }
-    }
+      }
+      
 
     return (
         <Flex h="2000px" direction="column" py="10" marginTop="50px" bg={isDarkMode ? "gray.900" : "white"} alignItems="center">
